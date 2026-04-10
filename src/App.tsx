@@ -2,9 +2,12 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import { getCoffees } from './services/coffee.service';
+import { Route, Routes } from 'react-router';
+import CoffeePage from './pages/CoffeePage';
+import HomePage from './pages/HomePage';
 
 function App() {
-  const [coffees, setCoffees] =useState([])
+  const [coffees, setCoffees] = useState([])
   useEffect(() => {
   const fetchData = async () => {
     try {
@@ -17,14 +20,12 @@ function App() {
   fetchData();
 }, []);
   return (
-    <div>
-      <h1>Coffee App ☕</h1>
-      {coffees.map((coffee:any)=>(
-        <div key={coffee.id}>
-          <div>{coffee.name}</div>
-        </div>
-      ))}
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage coffees={coffees}/>} />
+        <Route path='/coffeeDetail' element={<CoffeePage/>}/>
+      </Routes>
+    </>
   );
 }
 
