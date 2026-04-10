@@ -1,5 +1,5 @@
-// import { Coffee } from "../types/coffee"
 
+import { Link } from "react-router";
 import type { Coffee } from "../types/coffee";
 
 
@@ -20,7 +20,8 @@ export default function HomePage({coffees}: props) {
             <h1>Coffee App ☕</h1>
             {coffees.map((coffee:any)=>(
             <div key={coffee.id}>
-                <div>{coffee.name}</div>
+                <Link to={`/coffeeDetail/${coffee.id}`}><div>{coffee.name}</div></Link>
+                
             </div>
             ))}
         </div>
