@@ -8,7 +8,7 @@ import HomePage from './pages/HomePage';
 
 function App() {
   const [coffees, setCoffees] = useState([])
-  useEffect(() => {
+  
   const fetchData = async () => {
     try {
       const res = await getCoffees();
@@ -17,12 +17,15 @@ function App() {
       console.error(error);
     }
   };
-  fetchData();
-}, []);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage coffees={coffees}/>} />
+        <Route path="/" element={<HomePage coffees={coffees} setCoffees={setCoffees} fetchData={fetchData}/>} />
         <Route path='/coffeeDetail/:id' element={<CoffeePage coffees={coffees}/>}/>
       </Routes>
     </>
