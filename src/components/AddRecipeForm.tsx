@@ -6,6 +6,7 @@ import API from "../services/api"
 type Props ={
     recipe : Recipe[]
     setRecipe :React.Dispatch<React.SetStateAction<Recipe[]>>
+    coffeeId:number
 }
 
 
@@ -15,7 +16,7 @@ export default function AddRecipeForm({recipe, setRecipe, coffeeId}:Props) {
     const [grindSize, setGrindSize] =useState("")
     const [ratio, setRatio] =useState("")
     const [notes, setNotes] =useState("")
-    const handleSubmit = async(e) =>{
+    const handleSubmit = async(e : React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
         const body ={
             title :title,
@@ -48,11 +49,11 @@ export default function AddRecipeForm({recipe, setRecipe, coffeeId}:Props) {
   return (
     <div>
         <form onSubmit={handleSubmit}>
-            <input type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
-            <input type="text" value={method} onChange={(e)=>{setMethod(e.target.value)}}/>
-            <input type="text" value={grindSize} onChange={(e)=>{setGrindSize(e.target.value)}}/>
-            <input type="text" value={ratio} onChange={(e)=>{setRatio(e.target.value)}}/>
-            <input type="text" value={notes} onChange={(e)=>{setNotes(e.target.value)}}/>
+            <input className="border border-black p-2 rounded"  type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+            <input className="border border-black p-2 rounded"  type="text" value={method} onChange={(e)=>{setMethod(e.target.value)}}/>
+            <input className="border border-black p-2 rounded"  type="text" value={grindSize} onChange={(e)=>{setGrindSize(e.target.value)}}/>
+            <input className="border border-black p-2 rounded"  type="text" value={ratio} onChange={(e)=>{setRatio(e.target.value)}}/>
+            <input className="border border-black p-2 rounded"  type="text" value={notes} onChange={(e)=>{setNotes(e.target.value)}}/>
             <button type="submit">add</button>
         </form>
     </div>

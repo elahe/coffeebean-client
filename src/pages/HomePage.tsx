@@ -4,6 +4,7 @@ import type { Coffee } from "../types/coffee";
 import AddCoffeeForm from "../components/AddCoffeeForm";
 import API from "../services/api";
 import { useState } from "react";
+import coffeepic from "../assets/coffeepic.png"
 
 
 
@@ -32,7 +33,25 @@ export default function HomePage({coffees, setCoffee,fetchData}: props) {
 
   return (
     <>
-        <div>HomePage</div>
+        <div className="bg-cover h-screen w-screen bg-center" style={{ backgroundImage: `url(${coffeepic})` }}>
+            <div className="h-full flex flex-col justify-center items-start  px-10">
+                <div className="bg-white/80 rounded-full px-4 py-2">
+                    brewbook
+                </div>
+                <h1 className="text-[3a2418">
+                    A cozy little notebook <br />
+                    for the coffees you love.
+                </h1>
+                <p>
+                    Save your favourite beans, jot down brew recipes, and brew them just right.
+                </p>
+                <div>
+                    
+                </div>
+
+            </div>
+        </div>
+
         <div>
             <h1>Coffee App ☕</h1>
             {coffees.map((coffee:any)=>(
@@ -46,6 +65,7 @@ export default function HomePage({coffees, setCoffee,fetchData}: props) {
                             
                         }}>edit</button>
                 </div>
+                
                 
             </div>
             ))}

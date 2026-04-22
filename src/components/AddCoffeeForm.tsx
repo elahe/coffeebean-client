@@ -29,7 +29,7 @@ export default function AddCoffeeForm({coffees, setCoffee, fetchData, selectedCo
         recipes
     }
     
-    const handleSubmit = async(e) =>{
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
 
         try {
@@ -61,10 +61,10 @@ export default function AddCoffeeForm({coffees, setCoffee, fetchData, selectedCo
   return (
     <>
         <form onSubmit={selectedCoffee === null ? handleSubmit : editCoffee}>
-            <input value={name} onChange={(e) => setName(e.target.value)} />
-            <input value={origin} onChange={(e) => setOrigin(e.target.value)} />
-            <input value={roast} onChange={(e) => setRoast(e.target.value)} />
-            <input value={recipes} onChange={(e) => setRecipes(e.target.value)} />
+            <input className="border border-black p-2 rounded" value={name} onChange={(e) => setName(e.target.value)} />
+            <input className="border border-black p-2 rounded" value={origin} onChange={(e) => setOrigin(e.target.value)} />
+            <input className="border border-black p-2 rounded" value={roast} onChange={(e) => setRoast(e.target.value)} />
+            <input className="border border-black p-2 rounded" value={recipes} onChange={(e) => setRecipes(e.target.value)} />
 
             <button type="submit">
                 {selectedCoffee === null ? "add" : "save"}
