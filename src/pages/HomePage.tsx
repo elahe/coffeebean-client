@@ -5,7 +5,8 @@ import AddCoffeeForm from "../components/AddCoffeeForm";
 import API from "../services/api";
 import { useState } from "react";
 import coffeepic from "../assets/coffeepic.png"
-import { HeartIcon } from "@heroicons/react/24/solid";
+import { HeartIcon, PencilIcon } from "@heroicons/react/24/solid";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/16/solid";
 
 
 
@@ -54,15 +55,21 @@ export default function HomePage({coffees, setCoffee,fetchData}: props) {
             <div className="bg-[#f7ece5] grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
                 {/* <h1>Coffee App ☕</h1> */}
                 {coffees.map((coffee:any)=>(
-                <div key={coffee.id} className="rounded-lg border-[#e6e0d9] border py-4 px-2 ">
-                    <Link to={`/coffeeDetail/${coffee.id}`}><div>
-                        {coffee.name}
-                    </div></Link>
-                    <div>
-                            <button onClick={()=>{deleteCoffee(coffee.id)}}>delete</button>
-                            <button onClick={()=>{setSelectedCofffee(coffee.id)
-                                
-                            }}>edit</button>
+                <div key={coffee.id} className="rounded-lg border-[#f9f7f2] border m-2">
+                    <Link to={`/coffeeDetail/${coffee.id}`}>
+                        <div className="py-4 px-2">
+                            {coffee.name}
+                        </div>
+                    </Link>
+                    <div className="bg-[#f6f1eb] py-4 px-2 flex justify-end">
+                            <button onClick={()=>{deleteCoffee(coffee.id)}} className="flex items-center hover:bg-green-100 py-1 px-2">
+                                <TrashIcon className="w-4"/>
+                                <span>delete</span>
+                            </button>
+                            <button onClick={()=>{setSelectedCofffee(coffee.id)}} className="flex items-center hover:bg-green-100 py-1 px-2 my-2">
+                                <PencilIcon className="w-4"/>
+                                <span>edit</span>
+                            </button>
                     </div>
                     
                     
